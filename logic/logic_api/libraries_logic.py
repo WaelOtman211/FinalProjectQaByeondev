@@ -6,6 +6,6 @@ class LibrariesLogic:
         self.base_url = baseurl
 
     def add_library_to_favorite(self,headers,endpoints):
-        url = f'{self.base_url}user-profile/search-relevancy?searchRelevancy={endpoints}'
+        url = f'{self.base_url}api/user-profile/search-relevancy?searchRelevancy={endpoints}'
         response = self.api.api_patch_request(url, headers=headers)  # Removed the "data" argument
         return response
