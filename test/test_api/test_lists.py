@@ -18,7 +18,7 @@ class TestPetLogic(unittest.TestCase):
         isInstitutionalUser= "false"
 
         expected_message = "Successfully created a list"
-
+        
         self.assertEqual(expected_message,
                          self.api_list.add_list_of_books(headers, list_Name, description, list_Visibility,
                                                          isInstitutionalUser)[

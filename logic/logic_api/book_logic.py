@@ -22,3 +22,15 @@ class BookLogic:
         url = f'{self.base_url}api/lists?listName={list_name}&description={description}&listVisibility={list_Visibility}&isInstitutionalUser={is_institutional_user}'
         response = self.api.api_post_request(url, headers=headers)
         return response.json()
+
+    def get_books_data_from_specific_list(self,headers,list_id):
+        url = f'{self.base_url}api/lists/{list_id}?listDetails=true&limit=25&offset=1&orderBy=created-dsc&isInstitutionalUser=false'
+        response = self.api.api_get_request(url, headers=headers)
+        return response.json()
+
+    def get_book_id_due_to_list_name_and_book_name(self, headers,list_id,book_name):
+        response = self.get_books_data_from_specific_list(headers,list_id)
+        for entry in response['entries']:
+            if entry['title'] == book_name:
+                return entry['id']
+        return "there is no book in this name "

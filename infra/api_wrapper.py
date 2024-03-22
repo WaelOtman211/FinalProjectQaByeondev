@@ -6,8 +6,8 @@ class APIWrapper:
     def __init__(self):
         self.response = None
 
-    def api_get_request(self, url):
-        self.response = requests.get(url)
+    def api_get_request(self, url,headers):
+        self.response = requests.get(url,headers=headers)
         if self.response.ok:
             return self.response
         else:

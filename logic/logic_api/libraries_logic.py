@@ -7,3 +7,4 @@ class LibrariesLogic:
         url = f'{self.base_url}api/user-profile/search-relevancy?searchRelevancy={endpoints}'
         response = self.api.api_patch_request(url, headers=headers)
         return response
+
