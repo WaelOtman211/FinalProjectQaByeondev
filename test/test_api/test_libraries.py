@@ -5,7 +5,7 @@ from logic.logic_api.libraries_logic import LibrariesLogic
 from infra.headers import headers
 
 
-class TestPetLogic(unittest.TestCase):
+class TestLibrariesLogic(unittest.TestCase):
     def setUp(self):
         self.my_api = APIWrapper()
         self.browser = BrowserWrapper()

@@ -20,6 +20,10 @@ class SignInPage(Base_Page):
     MY_PROFILE_BUTTON = '//li[@data-value="my-profile"]'
     USER_NAME = '(//p[@class="MuiTypography-root MuiTypography-body1 tss-1elsz4e-flexColumn mui-1qm8jy7"])[1]'
     INCORRECT_LABEL_DISPLAYED = '//div[@class="object-error"]'
+    LIST_BUTTON = '//li[@data-value="my-lists"]'
+    LOVE_LIST_BUTTON = '//a[@href="/lists/dd27980e-c88b-460e-bb02-3d598a4ae70a"]'
+    VIEW_NOTE_BUTTON = '//button[@data-testid="view-note-button-828890184"]'
+    NOTE_TEXT_AREA = ' //textarea[@data-testid="note-description_828890184"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -83,6 +87,24 @@ class SignInPage(Base_Page):
         )
         my_profile_button.click()
 
+    def click_on_my_list_button(self):
+        my_list_button = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_element_located((By.XPATH, self.LIST_BUTTON))
+        )
+        my_list_button.click()
+
+    def click_on_my_love_list_button(self):
+        my_love_list_button = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_element_located((By.XPATH, self.LOVE_LIST_BUTTON))
+        )
+        my_love_list_button.click()
+
+    def click_on_view_note_button(self):
+        view_note_button = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_element_located((By.XPATH, self.VIEW_NOTE_BUTTON))
+        )
+        view_note_button.click()
+
     def is_sign_in_success(self, email, password):
         result=self.sign_in_flow(email, password)
         if result == "pass":
@@ -93,6 +115,12 @@ class SignInPage(Base_Page):
         else:
             return result
 
+    def check_adding_book_flow_with_note(self):
+        self.click_on_welcome_label()
+        self.click_on_my_list_button()
+        self.click_on_my_love_list_button()
+        self.click_on_view_note_button()
+
     def sign_in_flow(self, email, password):
         self.click_sing_in_button()
         self.fill_email_input_in_sign_in_world_cat(email)
@@ -101,8 +129,8 @@ class SignInPage(Base_Page):
         self.fill_password_in_sign_in_page(password)
         result = self.click_submit_sign_in_button()
         if result == "pass":
-            self.click_on_welcome_label()
-            self.click_on_my_profile_button()
-            return "pass"
+            noteText = self.check_adding_book_flow_with_note()
+            time.sleep(5)
+            return noteText
         else:
             return result

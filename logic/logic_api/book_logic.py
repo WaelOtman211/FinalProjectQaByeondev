@@ -3,7 +3,7 @@ class BookLogic:
         self.api = api_object
         self.base_url = baseurl
 
-    def add_book_to_war_list(self, headers, list_id, item_id, is_institutional_user):
+    def add_book_to_specific_list(self, headers, list_id, item_id, is_institutional_user):
         url = f'{self.base_url}api/lists/{list_id}?listId={list_id}&itemId={item_id}&isInstitutionalUser={is_institutional_user}'
         response = self.api.api_post_request(url, headers=headers)
         return response.json()

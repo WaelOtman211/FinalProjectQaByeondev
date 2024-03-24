@@ -17,8 +17,7 @@ class SearchTest(unittest.TestCase):
         self.browser.get_url(driver)
         search_page = SearchPage(driver)
         search_page.search_for_library_due_to_location("Yokneam Ilit")
-        expected_result="Libraries"
-        self.assertEqual(expected_result, search_page.is_lib_page_loaded())
+        self.assertEqual("Libraries", search_page.is_lib_page_loaded())
 
     def test_search_item_by_Brett_Cooke(self,browser):
         driver = self.browser.get_driver(browser)

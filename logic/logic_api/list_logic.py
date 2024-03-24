@@ -14,6 +14,11 @@ class ListLogic:
         response = self.api.api_get_request(url, headers=headers)
         return response.json()
 
+    def delete_list_of_books(self, headers,list_id):
+        url = f'{self.base_url}api/lists/{list_id}?listById=true&isInstitutionalUser=false'
+        response = self.api.api_delete_request(url, headers=headers)
+        return response.json()
+
     def return_list_of_specific_name(self,name, headers):
         url = f'{self.base_url}api/lists?limit=10&offset=1&orderBy=name-asc&isInstitutionalUser=false&listName ='
         response = self.api.api_get_request(url, headers=headers)

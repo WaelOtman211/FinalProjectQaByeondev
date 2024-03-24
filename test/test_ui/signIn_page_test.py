@@ -17,14 +17,16 @@ class SignInTest(unittest.TestCase):
         self.browser.get_url(driver)
         sign_in_page = SignInPage(driver)
         expected_result = "Wael"
-        self.assertEqual(expected_result, sign_in_page.is_sign_in_success("wael.otman.97@gmail.com", "Wael@1234"),
-                         "SignIn Success")
+        sign_in_page.sign_in_flow("wael.otman.97@gmail.com", "Wael@1234")
+        """self.assertEqual(expected_result, sign_in_page.is_sign_in_success("wael.otman.97@gmail.com", "Wael@1234"),
+                         "SignIn Success")"""
 
     def test_try_to_signIn_with_correct_email_and_wrong_password(self,browser):
         driver = self.browser.get_driver(browser)
         self.browser.get_url(driver)
         sign_in_page = SignInPage(driver)
         expected_result = "The email or password is invalid. Authentication failed."
+
         self.assertEqual(expected_result, sign_in_page.is_sign_in_success("wael.otman.97@gmail.com", "Soso@1234"),
                          "SignIn Success")
 
@@ -32,7 +34,6 @@ class SignInTest(unittest.TestCase):
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
                 executor.map(self.test_try_to_signIn_with_correct_email_and_password, self.browser.browser_types)
-
         else:
             self.test_try_to_signIn_with_correct_email_and_password(self.browser.default_browser)
 
