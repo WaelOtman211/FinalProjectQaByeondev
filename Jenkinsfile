@@ -1,5 +1,13 @@
 pipeline {
     agent any
+    environment {
+        // Define the Docker image name
+
+        INFRA_PATH = 'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\infra'
+        LOGIC_PATH = 'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\logic'
+        TEST_PATH = 'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\test'
+    
+    }
     stages {
         stage('Build') {
             steps {
