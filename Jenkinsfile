@@ -5,9 +5,9 @@ pipeline {
         // Define the Docker image name
         IMAGE_NAME = 'tests'
         TAG = 'latest'
-        INFRA_PATH = '/c/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/infra'
-        LOGIC_PATH = '/c/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/logic'
-        TEST_PATH = '/c/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/test'
+        INFRA_PATH = 'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\infra'
+        LOGIC_PATH = 'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\logic'
+        TEST_PATH = 'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\test'
         DOCKER_WORKDIR = '/usr/src/tests/FinalProjectQaByeondev'
     }
 
