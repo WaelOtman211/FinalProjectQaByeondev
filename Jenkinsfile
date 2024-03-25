@@ -20,9 +20,11 @@ pipeline {
         }
         stage('Run API Tests with Pytest') {
             steps {
+                echo 'Running API Tests with Pytest..'
                 script {
                     try {
-                        bat 'call venv/Scripts/python.exe -m pytest test/test_end_2_end.py --html=test-reports/report.html --self-contained-html'
+                        // Assuming pytest is installed in the virtual environment
+                        bat 'venv\\Scripts\\pytest test/test_end_2_end.py --html=test-reports\\report.html --self-contained-html'
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
