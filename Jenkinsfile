@@ -25,17 +25,17 @@ pipeline {
                         'Chrome Test': {
                             echo 'Running Chrome test...'
                             bat "docker rm -f chrome_test || true"
-                            bat "docker run --name chrome_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic -v ${TEST_PATH}:${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/test_end_2_end.py --browser chrome"
+                            bat "docker run --name chrome_test -e PYTHONPATH=/usr/src/tests/FinalProjectQaByeondev -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/infra:/usr/src/tests/FinalProjectQaByeondev/infra -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/logic:/usr/src/tests/FinalProjectQaByeondev/logic -vC:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/test:/usr/src/tests/FinalProjectQaByeondev/test tests:latest python /usr/src/tests/FinalProjectQaByeondev/test/test_end_2_end.py --browser chrome"
                         },
                         'Edge Test': {
                             echo 'Running Edge test...'
                             bat "docker rm -f edge_test || true"
-                            bat "docker run --name edge_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic -v ${TEST_PATH}:${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/test_end_2_end.py --browser edge"
+                            bat "docker run --name edge_test -e PYTHONPATH=/usr/src/tests/FinalProjectQaByeondev -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/infra:/usr/src/tests/FinalProjectQaByeondev/infra -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/logic:/usr/src/tests/FinalProjectQaByeondev/logic -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/test:/usr/src/tests/FinalProjectQaByeondev/test tests:latest python /usr/src/tests/FinalProjectQaByeondev/test/test_end_2_end.py --browser edge"
                         },
                         'Firefox Test': {
                             echo 'Running Firefox test...'
                             bat "docker rm -f firefox_test || true"
-                            bat "docker run --name firefox_test -e PYTHONPATH=${DOCKER_WORKDIR} -v ${INFRA_PATH}:${DOCKER_WORKDIR}/infra -v ${LOGIC_PATH}:${DOCKER_WORKDIR}/logic -v ${TEST_PATH}:${DOCKER_WORKDIR}/test ${IMAGE_NAME}:${TAG} python ${DOCKER_WORKDIR}/test/test_end_2_end.py --browser firefox"
+                            bat "docker run --name firefox_test -e PYTHONPATH=/usr/src/tests/FinalProjectQaByeondev -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/infra:/usr/src/tests/FinalProjectQaByeondev/infra -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/logic:/usr/src/tests/FinalProjectQaByeondev/logic -v C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev/test:/usr/src/tests/FinalProjectQaByeondev/test tests:latest python /usr/src/tests/FinalProjectQaByeondev/test/test_end_2_end.py --browser firefox"
                         }
                     )
                 }
