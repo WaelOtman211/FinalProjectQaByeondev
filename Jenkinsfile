@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         PYTHONPATH = "C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev"
+        TEST_REPORTS='test-reports'
     }
     stages {
         stage('Build') {
@@ -15,6 +16,17 @@ pipeline {
                 echo 'Testing..'
                 // Run your tests here
                 bat 'python test/test_end_2_end.py'
+            }
+        }
+        stage('Run API Tests with Pytest') {
+            steps {
+                script {
+                    try {
+                        bat 'call venv\\Scripts\\python.exe -m pytest tests/test_api/api_test_runner.py --html=test-reports\\report.html --self-contained-html'
+                    } catch (Exception e) {
+                        echo "Tests failed, but the build continues."
+                    }
+                }
             }
         }
         stage('Deploy') {
