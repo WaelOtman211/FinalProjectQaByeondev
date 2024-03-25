@@ -24,7 +24,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest using the specified path
-                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_end_2_end.py --html=test-reports\\report.html --self-contained-html"
+                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_end_2_end.py --html=test-reports/report.html --self-contained-html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
