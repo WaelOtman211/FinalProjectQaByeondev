@@ -20,6 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
+                // Add deployment steps here if needed
             }
         }
     }
