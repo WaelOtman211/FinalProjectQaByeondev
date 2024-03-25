@@ -23,15 +23,11 @@ pipeline {
                 echo 'Running API Tests with Pytest..'
                 script {
                     try {
-                        // Activate the virtual environment
+                        // Assuming pytest is installed in the virtual environment
                         bat 'call venv\\Scripts\\activate'
-                        // Run pytest
-                        bat 'pytest test/test_end_2_end.py --html=test-reports\\report.html --self-contained-html'
+                        bat 'venv/Scripts/python.exe test/test_end_2_end.py --html=test-reports\\report.html --self-contained-html'
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
-                    } finally {
-                        // Deactivate the virtual environment
-                        bat 'call venv\\Scripts\\deactivate'
                     }
                 }
             }
