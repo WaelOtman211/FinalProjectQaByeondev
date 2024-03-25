@@ -1,11 +1,12 @@
 pipeline {
     agent any
+    environment {
+        PYTHONPATH = "C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev"
+    }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat 'python -m venv venv'
-                bat 'venv\\Scripts\\activate'
                 bat 'pip install -r requirements.txt' // Install dependencies if needed
             }
         }
@@ -13,7 +14,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat 'venv\\Scripts\\python test/test_end_2_end.py'
+                bat 'python test/test_end_2_end.py'
             }
         }
         stage('Deploy') {
