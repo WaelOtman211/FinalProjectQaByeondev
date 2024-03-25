@@ -7,7 +7,7 @@ from infra.config_handler import ConfigHandler
 class BrowserWrapper:
     def __init__(self):
         self.driver = None
-        config_file_path = r'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\WorldCatSeleniumGrid\infra\config.json'
+        config_file_path = r'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\infra\config.json'
         self.config_handler = ConfigHandler(config_file_path)
         self.grid_enabled = self.config_handler.get_config_value('grid')
         self.serial_enabled = self.config_handler.get_config_value('serial')
@@ -17,7 +17,7 @@ class BrowserWrapper:
         self.hub_url = self.config_handler.get_config_value('hub_url')
         self.url = self.config_handler.get_config_value('url')
         self.apiWrapper = APIWrapper()
-        self.jira_url = 'https://waelotman211.atlassian.net/jira/your-work'
+
 
 
 

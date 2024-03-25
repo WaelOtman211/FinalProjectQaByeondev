@@ -105,6 +105,13 @@ class SignInPage(Base_Page):
         )
         view_note_button.click()
 
+    def get_note_book(self):
+        view_note = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_element_located((By.XPATH, self.NOTE_TEXT_AREA))
+        ).text
+        return view_note
+
+
     def is_sign_in_success(self, email, password):
         result=self.sign_in_flow(email, password)
         if result == "pass":
@@ -120,6 +127,7 @@ class SignInPage(Base_Page):
         self.click_on_my_list_button()
         self.click_on_my_love_list_button()
         self.click_on_view_note_button()
+        return self.get_note_book()
 
     def sign_in_flow(self, email, password):
         self.click_sing_in_button()
