@@ -11,8 +11,7 @@ class TestBookLogic(unittest.TestCase):
         self.my_api = APIWrapper()
         self.browser = BrowserWrapper()
         self.api_book = BookLogic(self.my_api, self.browser.url)
-        self.jira_client=JiraClient()
-        self.failed_tests = []
+        self.jira_client = JiraClient()
 
     def tearDown(self):
         if self._outcome.errors:

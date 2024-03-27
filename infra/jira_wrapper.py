@@ -11,16 +11,11 @@ class JiraClient:
         config_file_path = r'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\infra\config.json'
         self.config_handler = ConfigHandler(config_file_path)
         self.jira_url = self.config_handler.get_config_value('jira_url')
+        self.my_email = self.config_handler.get_config_value('my_email')
         self.TOKEN = os.getenv("JIRA_TOKEN")
-        self.auth_jira = JIRA(basic_auth=('waelotman211@gmail.com', self.TOKEN), options={'server': self.jira_url})
+        self.auth_jira = JIRA(basic_auth=(self.my_email, self.TOKEN), options={'server': self.jira_url})
 
     def create_issue(self, summary, description, project_key, issue_type='Bug'):
-        print("summary",summary)
-        print("description", description)
-        print("project_key",project_key)
-        print("issue_type",issue_type)
-
-
         issue_dict = {
             'project': {'key': project_key},
             'summary': summary,
