@@ -59,8 +59,32 @@ pipeline {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
                         bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_api/test_book.py --html=test-reports/reportAPI.html"
+                    } catch (Exception e) {
+                        echo "Tests failed, but the build continues."
+                    }
+                }
+            }
+        }
+        stage('Run Non-Functional Tests with Pytest') {
+            steps {
+                echo 'Running API Tests with Pytest..'
+                script {
+                    try {
+                        // Run pytest with pytest-html plugin to generate HTML report
+                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_ui/Localization_home_page_test.py --html=test-reports/reportEndToEnd.html"
+                    } catch (Exception e) {
+                        echo "Tests failed, but the build continues."
+                    }
+                }
+            }
+        }
+        stage('Run End To End Tests with Pytest') {
+            steps {
+                echo 'Running API Tests with Pytest..'
+                script {
+                    try {
+                        // Run pytest with pytest-html plugin to generate HTML report
                         bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_end_2_end.py --html=test-reports/reportNonFunctional.html"
-                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_end_2_end.py --html=test-reports/reportEndToEnd.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
