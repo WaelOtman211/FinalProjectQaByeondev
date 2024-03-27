@@ -6,5 +6,5 @@
   "browser":"chrome",
   "platform": "windows",
   "browser_types": ["chrome","fireFox","edge"],
-  "jira_url" : "https://waelotman211-1707213871350.atlassian.net",
+  "jira_url" : "https://waelotman211-1707213871350.atlassian.net"
 }

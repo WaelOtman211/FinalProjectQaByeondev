@@ -20,7 +20,7 @@ class BrowserWrapper:
         self.hub_url = self.config_handler.get_config_value('hub_url')
         self.url = self.config_handler.get_config_value('url')
         self.jira_url = self.config_handler.get_config_value('jira_url')
-        self.TOKEN = os.getenv("ATLAS_TOKEN")
+        self.TOKEN = os.getenv("JIRA_TOKEN")
         self.auth_jira = JIRA(basic_auth=('waelotman211@gmail.com', self.TOKEN), options={'server':self.jira_url})
 
         self.apiWrapper = APIWrapper()

@@ -3,6 +3,7 @@ pipeline {
     environment {
         PYTHONPATH = "C:/Users/saher/OneDrive/קבצים מצורפים/שולחן העבודה/repos/FinalProjectQaByeondev"
         TEST_REPORTS='test-reports'
+        PASSWORD = credentials('JIRA_TOKEN')
     }
     stages {
         stage('Build') {

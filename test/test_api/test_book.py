@@ -23,42 +23,25 @@ class TestBookLogic(unittest.TestCase):
             )
 
     def test_add_book_to_specific_list(self):
-        list_id = "2e916b85-736e-4a89-8a66-de9a824065b3"
-        item_id = "828890184"
-        is_institutional_user = "false"
-
-        expected_message = "Successfully added item to list"
-        self.assertEqual(expected_message,
-                         self.api_book.add_book_to_specific_list(headers, list_id, item_id, is_institutional_user)[
+        self.assertEqual("Successfully added item to list",
+                         self.api_book.add_book_to_specific_list(headers, "2e916b85-736e-4a89-8a66-de9a824065b3", "828890184", "false")[
                              'message'])
 
     def test_add_note_to_specific_book(self):
-        list_id = "2e916b85-736e-4a89-8a66-de9a824065b3"
-        item_id = "828890184"
-        note = "sameerb7bso3ad"
-        isInstitutionalUser = "false"
-
-        expected_message = f"Successfully updated Notes for an item in list"
-        self.assertEqual(expected_message,
-                         self.api_book.add_note_to_specific_book(headers, list_id, item_id, note,
-                                                                 isInstitutionalUser)[
+        self.assertEqual("Successfully updated Notes for an item in list",
+                         self.api_book.add_note_to_specific_book(headers, "2e916b85-736e-4a89-8a66-de9a824065b3", "828890184", "sameerb7bso3ad",
+                                                                 "false")[
                              'message'])
 
     def test_get_book_id_due_to_list_name_and_book_name(self):
-
-        list_id = "2e916b85-736e-4a89-8a66-de9a824065b3"
-        book_name='War'
-
-        self.assertEqual(11386423333702,self.api_book.get_book_id_due_to_list_name_and_book_name(headers,list_id,book_name))
+        self.assertEqual(11386423333702,
+                         self.api_book.get_book_id_due_to_list_name_and_book_name(headers, "2e916b85-736e-4a89-8a66-de9a824065b3",'War'))
 
     def test_delete_book_from_war_list(self):
         list_id = "2e916b85-736e-4a89-8a66-de9a824065b3"
         item_id = "828890184"
-        is_institutional_user = "false"
-        expected_message = f"Successfully deleted item:{item_id} from list:{list_id}"
-
-        self.assertEqual(expected_message,
-                         self.api_book.delete_book_from_war_list(headers, list_id, item_id, is_institutional_user)[
+        self.assertEqual(f"Successfully deleted item:{item_id} from list:{list_id}",
+                         self.api_book.delete_book_from_war_list(headers, list_id, item_id, "false")[
                              'message'])
 
     def create_issue(self, summary, description, project_key, issue_type='Bug'):
