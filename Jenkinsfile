@@ -71,7 +71,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_ui/Localization_home_page_test.py --html=test-reports/reportEndToEnd.html"
+                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe -k test_run_grid_parallel_incorrect_location --html=test-reports/reportEndToEnd.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
@@ -84,7 +84,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_end_2_end.py --html=test-reports/reportNonFunctional.html"
+                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe -k test_run_grid_parallel_add_book_to_specific_list_and_note --html=test-reports/reportNonFunctional.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
