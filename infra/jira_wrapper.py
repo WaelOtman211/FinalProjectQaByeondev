@@ -15,11 +15,17 @@ class JiraClient:
         self.auth_jira = JIRA(basic_auth=('waelotman211@gmail.com', self.TOKEN), options={'server': self.jira_url})
 
     def create_issue(self, summary, description, project_key, issue_type='Bug'):
+        print("summary",summary)
+        print("description", description)
+        print("project_key",project_key)
+        print("issue_type",issue_type)
+
+
         issue_dict = {
             'project': {'key': project_key},
             'summary': summary,
             'description': description,
             'issuetype': {'name': issue_type}
         }
-        new_issue = self.browser.auth_jira.create_issue(fields=issue_dict)
+        new_issue = self.auth_jira.create_issue(fields=issue_dict)
         return new_issue.key

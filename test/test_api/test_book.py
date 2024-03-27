@@ -11,13 +11,13 @@ class TestBookLogic(unittest.TestCase):
         self.my_api = APIWrapper()
         self.browser = BrowserWrapper()
         self.api_book = BookLogic(self.my_api, self.browser.url)
-        self.jira_wrapper = JiraClient()
+        self.jira_client=JiraClient()
         self.failed_tests = []
 
     def tearDown(self):
         if self._outcome.errors:
             # Create issue only if there are test failures
-            self.jira_wrapper.create_issue(
+            self.jira_client.create_issue(
                 summary='Test Failure',
                 description='One or more tests failed in TestBookLogic.',
                 project_key='TT',
@@ -45,9 +45,6 @@ class TestBookLogic(unittest.TestCase):
         self.assertEqual(f"Successfully deleted item:{item_id} from list:{list_id}",
                          self.api_book.delete_book_from_war_list(headers, list_id, item_id, "false")[
                              'message'])
-
-
-
 
 if __name__ == '__main__':
     unittest.main()
