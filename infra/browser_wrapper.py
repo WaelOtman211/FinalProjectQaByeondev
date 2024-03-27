@@ -2,10 +2,13 @@ from selenium import webdriver
 from jira import JIRA
 from infra.api_wrapper import APIWrapper
 from infra.config_handler import ConfigHandler
+import os
+from dotenv import load_dotenv
 
 
 class BrowserWrapper:
     def __init__(self):
+        load_dotenv()
         self.driver = None
         config_file_path = r'C:\Users\saher\OneDrive\קבצים מצורפים\שולחן העבודה\repos\FinalProjectQaByeondev\infra\config.json'
         self.config_handler = ConfigHandler(config_file_path)
@@ -16,6 +19,10 @@ class BrowserWrapper:
         self.platform = self.config_handler.get_config_value('platform')
         self.hub_url = self.config_handler.get_config_value('hub_url')
         self.url = self.config_handler.get_config_value('url')
+        self.jira_url = self.config_handler.get_config_value('jira_url')
+        self.TOKEN = os.getenv("ATLAS_TOKEN")
+        self.auth_jira = JIRA(basic_auth=('waelotman211@gmail.com', self.TOKEN), options={'server':self.jira_url})
+
         self.apiWrapper = APIWrapper()
 
 
