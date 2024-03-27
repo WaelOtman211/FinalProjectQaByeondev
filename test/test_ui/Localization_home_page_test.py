@@ -12,14 +12,14 @@ class LocalizationTest(unittest.TestCase):
     def tearDown(self):
         self.browser.close_browser()
 
-    def check_language_changing_to_french(self,browser):
+    def test_check_language_changing_to_french(self,browser):
         driver = self.browser.get_driver(browser)
         self.browser.get_url(driver)
         localization_page = LocalizationPage(driver)
 
         self.assertTrue(localization_page.is_the_language_changed(),"The language is not French.")
 
-    def find_library_in_incorrect_location(self, browser):
+    def test_find_library_in_incorrect_location(self, browser):
         driver = self.browser.get_driver(browser)
         self.browser.get_url(driver)
         localization_page = LocalizationPage(driver)
@@ -28,20 +28,17 @@ class LocalizationTest(unittest.TestCase):
         expected_result="We didn't find any results."
         self.assertEqual(expected_result,localization_page.dose_found_any_librarys())
 
-
     def test_run_grid_parallel_changing_to_french(self):
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
-                executor.map(self.check_language_changing_to_french, self.browser.browser_types)
-
+                executor.map(self.test_check_language_changing_to_french, self.browser.browser_types)
         else:
-            self.check_language_changing_to_french(self.browser.default_browser)
-
+            self.test_check_language_changing_to_french(self.browser.default_browser)
 
     def test_run_grid_parallel_incorrect_location(self):
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
-                executor.map(self.find_library_in_incorrect_location, self.browser.browser_types)
+                executor.map(self.test_find_library_in_incorrect_location, self.browser.browser_types)
 
         else:
-            self.find_library_in_incorrect_location(self.browser.default_browser)
+            self.test_find_library_in_incorrect_location(self.browser.default_browser)

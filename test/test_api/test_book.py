@@ -1,6 +1,7 @@
 import unittest
 from infra.api_wrapper import APIWrapper
 from infra.browser_wrapper import BrowserWrapper
+from infra.jira_wrapper import JiraClient
 from logic.logic_api.book_logic import BookLogic
 from infra.headers import headers
 
@@ -10,12 +11,13 @@ class TestBookLogic(unittest.TestCase):
         self.my_api = APIWrapper()
         self.browser = BrowserWrapper()
         self.api_book = BookLogic(self.my_api, self.browser.url)
+        self.jira_wrapper = JiraClient()
         self.failed_tests = []
 
     def tearDown(self):
         if self._outcome.errors:
             # Create issue only if there are test failures
-            self.create_issue(
+            self.jira_wrapper.create_issue(
                 summary='Test Failure',
                 description='One or more tests failed in TestBookLogic.',
                 project_key='TT',
@@ -44,15 +46,7 @@ class TestBookLogic(unittest.TestCase):
                          self.api_book.delete_book_from_war_list(headers, list_id, item_id, "false")[
                              'message'])
 
-    def create_issue(self, summary, description, project_key, issue_type='Bug'):
-        issue_dict = {
-            'project': {'key': project_key},
-            'summary': summary,
-            'description': description,
-            'issuetype': {'name': issue_type}
-        }
-        new_issue = self.browser.auth_jira.create_issue(fields=issue_dict)
-        return new_issue.key
+
 
 
 if __name__ == '__main__':

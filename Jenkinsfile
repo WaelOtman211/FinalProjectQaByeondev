@@ -18,7 +18,7 @@ pipeline {
                 // Run your tests here
                 script {
                     try {
-                        bat 'python test/test_ui/Localization_home_page_test.py'
+                        bat 'python -k test_run_grid_parallel_incorrect_location'
 
                     } catch (Exception e) {
                         echo "Test failed, but the build continues."
@@ -32,7 +32,7 @@ pipeline {
                 // Run your tests here
                 script {
                     try {
-                        bat 'python test/test_end_2_end.py'
+                        bat 'python -k test_run_grid_parallel_add_book_to_specific_list_and_note'
                     } catch (Exception e) {
                         echo "Test failed, but the build continues."
                     }

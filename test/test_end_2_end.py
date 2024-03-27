@@ -21,7 +21,7 @@ class End2EndTest(unittest.TestCase):
     def tearDown(self):
         self.browser.close_browser()
 
-    def add_book_to_specific_list_and_note_to_specific_book(self, browser_type=None):
+    def test_add_book_to_specific_list_and_note_to_specific_book(self, browser_type):
         driver = self.browser.get_driver(browser_type)
         self.browser.get_url(driver)
         end_2_end = SignInPage(driver)
@@ -34,10 +34,10 @@ class End2EndTest(unittest.TestCase):
 
 
 
-    def test_run_grid_parallel(self):
+    def test_run_grid_parallel_add_book_to_specific_list_and_note(self):
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
-                executor.map(self.add_book_to_specific_list_and_note_to_specific_book, self.browser.browser_types)
+                executor.map(self.test_add_book_to_specific_list_and_note_to_specific_book, self.browser.browser_types)
         else:
-            self.add_book_to_specific_list_and_note_to_specific_book(self.browser.default_browser)
+            self.test_add_book_to_specific_list_and_note_to_specific_book(self.browser.default_browser)
 
