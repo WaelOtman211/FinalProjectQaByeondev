@@ -19,6 +19,7 @@ pipeline {
                 script {
                     try {
                         bat 'python test/test_api/test_book.py'
+                        bat 'python test/test_end_2_end.py'
                     } catch (Exception e) {
                         echo "Test failed, but the build continues."
                     }
@@ -32,6 +33,7 @@ pipeline {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
                         bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_api/test_book.py --html=test-reports/report.html"
+                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_end_2_end.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
