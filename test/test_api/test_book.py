@@ -45,5 +45,6 @@ class TestBookLogic(unittest.TestCase):
                          self.api_book.delete_book_from_war_list(headers, list_id, item_id, "false")[
                              'message'])
 
+
 if __name__ == '__main__':
     unittest.main()

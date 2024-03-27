@@ -12,8 +12,7 @@ class TestLibrariesLogic(unittest.TestCase):
         self.api_libraries = LibrariesLogic(self.my_api,self.browser.url)
 
     def test_add_libraries_to_favorite(self):
-        libraries_ids = "124551,62465"
-        print(self.api_libraries.add_library_to_favorite(headers,endpoints=libraries_ids))
+        print(self.api_libraries.add_library_to_favorite(headers,endpoints="124551,62465"))
 
 if __name__ == '__main__':
     unittest.main()
