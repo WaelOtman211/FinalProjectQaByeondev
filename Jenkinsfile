@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat 'python test/test_end_2_end.py'
+                bat 'python test/test_api/test_book.py'
             }
         }
         stage('Run API Tests with Pytest') {
@@ -25,7 +25,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_end_2_end.py --html=test-reports/report.html"
+                        bat "C:/AutomationWithTsahi/pythonProjectBeyondev/venv/Scripts/pytest.exe test/test_api/test_book.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
