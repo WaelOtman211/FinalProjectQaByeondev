@@ -14,7 +14,8 @@ class TestBookLogic(unittest.TestCase):
 
     def tearDown(self):
         # Perform cleanup actions here if needed
-        if self.failed_tests:
+        outcome = self._outcome.result
+        if outcome.errors or outcome.failures:
             # Create issue only if there are test failures
             self.create_issue(
                 summary='Test Failure',
