@@ -33,7 +33,6 @@ class End2EndTest(unittest.TestCase):
         self.assertEqual('i love read book', end_2_end.sign_in_flow("wael.otman.97@gmail.com", "Wael@1234"))
 
 
-
     def test_run_grid_parallel_add_book_to_specific_list_and_note(self):
         if self.browser.grid_enabled and not self.browser.serial_enabled:
             with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.browser.browser_types)) as executor:
